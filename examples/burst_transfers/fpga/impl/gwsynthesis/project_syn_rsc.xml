@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="top" Register="37" Lut="5" T_Register="193(37)" T_Alu="66(0)" T_Lut="74(5)" T_Bsram="2(0)">
+ <SubModule name="spi_inst" T_Register="156(0)" T_Alu="66(0)" T_Lut="69(0)" T_Bsram="2(0)">
+  <SubModule name="spi_inst" Register="118" Lut="61" T_Register="118(118)" T_Lut="61(61)"/>
+  <SubModule name="rx_fifo_inst" Register="19" Alu="33" Lut="3" Bsram="1" T_Register="19(19)" T_Alu="33(33)" T_Lut="3(3)" T_Bsram="1(1)"/>
+  <SubModule name="tx_fifo_inst" Register="19" Alu="33" Lut="5" Bsram="1" T_Register="19(19)" T_Alu="33(33)" T_Lut="5(5)" T_Bsram="1(1)"/>
+ </SubModule>
+</Module>

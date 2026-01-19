@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2A-18C" pn="GW2A-LV18PG256C8/I7">gw2a18c-011</Device>
+    <FileList>
+        <File path="../../../gateware/spi_slave_fifo.v" type="file.verilog" enable="1" />
+        <File path="../../../gateware/spi_slave.v" type="file.verilog" enable="1" />
+        <File path="../../../gateware/fifo_sync.v" type="file.verilog" enable="1" />
+        <File path="../gateware/top.v" type="file.verilog" enable="1" />
+        <File path="constraints/spi_pins.cst" type="file.cst" enable="1" /></FileList>
+</Project>

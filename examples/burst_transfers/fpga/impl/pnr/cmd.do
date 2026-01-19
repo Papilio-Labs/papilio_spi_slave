@@ -1,0 +1,17 @@
+-d C:\development\dev_wishbone_bus\libs\papilio_spi_slave\examples\burst_transfers\fpga\impl\gwsynthesis\project.vg
+-p GW2A-18C-PBGA256-8
+-pn GW2A-LV18PG256C8/I7
+-cst C:\development\dev_wishbone_bus\libs\papilio_spi_slave\examples\burst_transfers\fpga\constraints\spi_pins.cst
+-cfg C:\development\dev_wishbone_bus\libs\papilio_spi_slave\examples\burst_transfers\fpga\impl\pnr\device.cfg
+-bit
+-tr
+-ph
+-timing
+-cst_error
+-convert_sdp32_36_to_sdp16_18
+-place_option 0
+-route_option 0
+-clock_route_order 0
+-correct_hold 1
+-route_maxfan 23
+-global_freq 100.000

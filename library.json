@@ -1,0 +1,76 @@
+{
+  "name": "papilio_spi_slave",
+  "version": "1.0.0",
+  "description": "Production-ready SPI slave library with 8/16/32-bit transfers, FIFO buffering, burst mode, and Wishbone integration",
+  "keywords": [
+    "spi",
+    "slave",
+    "fpga",
+    "hdl",
+    "verilog",
+    "wishbone",
+    "fifo",
+    "gowin",
+    "papilio",
+    "arduino"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Papilio-Labs/papilio_spi_slave.git"
+  },
+  "authors": [
+    {
+      "name": "Papilio Labs",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "frameworks": ["arduino", "hdl"],
+  "platforms": ["espressif32", "*"],
+  "export": {
+    "include": [
+      "src/*.h",
+      "src/*.cpp",
+      "gateware/*.v",
+      "examples/**",
+      "docs/**",
+      "README.md"
+    ]
+  },
+  "papilio": {
+    "schema_version": "1.0",
+    "gateware": {
+      "modules": [
+        {
+          "name": "simple_spi_wb_bridge",
+          "file": "gateware/spi_wb_bridge.v",
+          "parameters": {},
+          "ports": {
+            "spi_sclk": "spi_sclk",
+            "spi_mosi": "spi_mosi",
+            "spi_miso": "spi_miso",
+            "spi_cs_n": "spi_cs_n"
+          },
+          "template": "// SPI to Wishbone Bridge\nsimple_spi_wb_bridge ${INSTANCE_NAME}_inst (\n    .clk(clk),\n    .rst(rst),\n    // SPI Interface\n    .spi_sclk(spi_sclk),\n    .spi_mosi(spi_mosi),\n    .spi_miso(spi_miso),\n    .spi_cs_n(spi_cs_n),\n    // Wishbone Master Interface\n    .wb_adr_o(wb_adr),\n    .wb_dat_o(wb_dat_m2s),\n    .wb_dat_i(wb_dat_s2m),\n    .wb_we_o(wb_we),\n    .wb_cyc_o(wb_cyc),\n    .wb_stb_o(wb_stb),\n    .wb_ack_i(wb_ack)\n);"
+        }
+      ],
+      "additional_files": [
+        "gateware/fifo_sync.v",
+        "gateware/spi_slave.v",
+        "gateware/spi_slave_fifo.v"
+      ]
+    },
+    "wishbone": {
+      "type": "bridge",
+      "data_width": 8,
+      "address_range": "0x0000-0x0FFF"
+    },
+    "esp32": {
+      "class_name": "PapilioSPISlave",
+      "headers": ["PapilioSPISlave.h"],
+      "constructor_args": [],
+      "init_code": "${VAR}.begin();",
+      "dependencies": []
+    }
+  }
+}

@@ -40,34 +40,17 @@
   "papilio": {
     "schema_version": "1.0",
     "gateware": {
-      "modules": [
-        {
-          "name": "simple_spi_wb_bridge",
-          "file": "gateware/spi_wb_bridge.v",
-          "parameters": {},
-          "ports": {
-            "spi_sclk": "spi_sclk",
-            "spi_mosi": "spi_mosi",
-            "spi_miso": "spi_miso",
-            "spi_cs_n": "spi_cs_n"
-          },
-          "template": "// SPI to Wishbone Bridge\nsimple_spi_wb_bridge ${INSTANCE_NAME}_inst (\n    .clk(clk),\n    .rst(rst),\n    // SPI Interface\n    .spi_sclk(spi_sclk),\n    .spi_mosi(spi_mosi),\n    .spi_miso(spi_miso),\n    .spi_cs_n(spi_cs_n),\n    // Wishbone Master Interface\n    .wb_adr_o(wb_adr),\n    .wb_dat_o(wb_dat_m2s),\n    .wb_dat_i(wb_dat_s2m),\n    .wb_we_o(wb_we),\n    .wb_cyc_o(wb_cyc),\n    .wb_stb_o(wb_stb),\n    .wb_ack_i(wb_ack)\n);"
-        }
-      ],
+      "modules": [],
       "additional_files": [
         "gateware/fifo_sync.v",
         "gateware/spi_slave.v",
-        "gateware/spi_slave_fifo.v"
+        "gateware/spi_slave_fifo.v",
+        "gateware/spi_bram_controller.v"
       ]
     },
-    "wishbone": {
-      "type": "bridge",
-      "data_width": 8,
-      "address_range": "0x0000-0x0FFF"
-    },
     "esp32": {
-      "class_name": "PapilioSPISlave",
-      "headers": ["PapilioSPISlave.h"],
+      "class_name": "PapilioSPI",
+      "headers": ["PapilioSPI.h"],
       "constructor_args": [],
       "init_code": "${VAR}.begin();",
       "dependencies": []
